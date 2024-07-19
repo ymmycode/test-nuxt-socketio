@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-07-19',
   runtimeConfig: {
     public: {
-      url: 'https://test-nuxt-socketio.vercel.app',
+      // url: 'https://test-nuxt-socketio.vercel.app',
+      url: 'http://192.168.0.107',
       port: 3001
     }
   },
