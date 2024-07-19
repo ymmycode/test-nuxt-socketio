@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-07-19',
+  runtimeConfig: {
+    public: {
+      url: 'http://localhost',
+      port: 3001
+    }
+  },
   devtools: { enabled: true },
   preset: 'node-server',
   srcDir: './src',
@@ -71,10 +77,16 @@ export default defineNuxtConfig({
       config.resolve.symlinks = false;
     },
   },
+  plugins: [
+    '~/plugins/socket.ts'
+  ],
   nitro: {
     compressPublicAssets: true,
     experimental: {
       websocket: true
     },
+    plugins: [
+      '~/server/plugins/socket.io.ts'
+    ]
   },
 })

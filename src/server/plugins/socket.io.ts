@@ -4,13 +4,29 @@ import { Server } from "socket.io";
 import { defineEventHandler } from "h3";
 
 export default defineNitroPlugin((nitroApp: NitroApp) => {
+  let inputDataTransport
+
   const engine = new Engine();
-  const io = new Server();
+  const io = new Server(
+    useRuntimeConfig().public.port,
+    {
+      serveClient: false,
+      cors: {
+        origin: '*'
+      }
+    }
+  );
 
   io.bind(engine);
 
   io.on("connection", (socket) => {
-    console.log(socket)
+    // console.log(socket)
+    socket.on('inputData', (message: { value: number }) => {
+      inputDataTransport = message.value
+
+      io.emit('inputData', inputDataTransport);
+    });
+
   });
 
   nitroApp.router.use("/socket.io/", defineEventHandler({

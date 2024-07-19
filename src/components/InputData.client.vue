@@ -9,24 +9,21 @@
 </template>
 
 <script setup>
-import { socket } from "./socket";
-
+const { $io } = useNuxtApp()
 const route = useRoute()
-const isConnected = ref(false);
-const inputData = ref()
+const inputData = ref("")
 
-if (socket.connected) {
-  isConnected.value = true;
-}
+$io.connect();
 
 watch(() => inputData.value,
   (val) => {
-    if(route.query.id && isConnected){
-      console.log(1)
-      socket.emit("inputData", val);
+    if(route.query.id){
+      console.log(val)
+      $io.emit("inputData", {value: val});
     }
   }
 )
+
 </script>
 
 <style lang="scss" scoped>

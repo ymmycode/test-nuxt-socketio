@@ -8,24 +8,22 @@
 </template>
 
 <script setup>
-import { socket } from '~/components/socket';
+const { $io } = useNuxtApp()
 
 const isConnected = ref(false);
-const data = ref("test")
+const data = shallowRef("")
+
+$io.connect();
 
 onMounted(()  => {
-  if (socket.connected) {
+  if ($io.connected) {
     isConnected.value = true;
   }
-  nextTick(() => {
-    socket.on("inputData", (value) => {
-      console.log(value)
-      data.value = value
-    });
-  })
 })
 
-
+$io.on("inputData", (message) => {
+  data.value = message
+});
 
 </script>
 

@@ -4,9 +4,9 @@
 </template>
 
 <script setup>
-import { socket } from '~/components/socket';
+const { $io } = useNuxtApp()
 
-socket.on("disconnect", (reason, details) => {
+$io.on("disconnect", (reason, details) => {
   // the reason of the disconnection, for example "transport error"
   console.log(reason);
 
