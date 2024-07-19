@@ -1,5 +1,5 @@
 <template>
-  <div v-if="false">
+  <div v-if="true">
     <p>Status: {{ isConnected ? "connected" : "disconnected" }}</p>
     <p>Transport: {{ transport }}</p>
   </div>

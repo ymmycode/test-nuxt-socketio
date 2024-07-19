@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-07-19',
   devtools: { enabled: true },
+  preset: 'node-server',
   srcDir: './src',
   modules: [
     '@nuxtjs/tailwindcss',
@@ -53,6 +54,12 @@ export default defineNuxtConfig({
   css: [
     '~/assets/styles/main.scss',
   ],
+  app: {
+    port: '3000',
+    exec_mode: 'cluster',
+    instances: 'max',
+    script: './.output/server/index.mjs',
+  },
   server: {
     port: 3000,
     host: '0.0.0.0'
@@ -65,6 +72,7 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
+    compressPublicAssets: true,
     experimental: {
       websocket: true
     },
