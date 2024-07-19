@@ -4,13 +4,34 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host 0.0.0.0",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/typography": "^0.5.13",
     "nuxt": "^3.12.3",
+    "nuxt-booster": "^3.0.16",
+    "pinia": "^2.1.7",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "vue": "latest"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.8",
+    "utf-8-validate": "^6.0.4"
+  },
+  "devDependencies": {
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
+    "@pinia/nuxt": "^0.5.1",
+    "i": "^0.3.7",
+    "npm": "^10.8.2",
+    "sass": "^1.77.8"
+  },
+  "overrides": {
     "vue": "latest"
   }
 }
